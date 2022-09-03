@@ -1,0 +1,75 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #F6F6F6;
+}
+
+/*------------------- 
+    head
+-------------------*/
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin: auto;
+}
+
+.navBar {
+    display: flex;
+    align-items: center;
+}
+
+#news {
+    background-color: #5D5FEF;
+    border-radius: 5px;
+    padding: 10px;
+    color: white;
+}
+
+#channel {
+    color: #5D5FEF;
+    margin-left: 10px;
+}
+
+.navLink {
+    text-decoration: none;
+    justify-content: center;
+}
+
+.navLink hr {
+    width: 55%;
+    margin-top: 0;
+    color: #5D5FEF;
+}
+
+.navSelected {
+    color: #5D5FEF;
+    margin-bottom: 0px;
+
+}
+
+
+
+.navNotSelected {
+
+    color: #A3A3A3;
+    margin: auto;
+
+}
+
+#navBlog {
+    margin: auto auto auto 25px;
+}
+
+header hr {
+    width: 90%;
+    color: #A3A3A3;
+}
+
+
+/* menu  */
+
+#menuUl li {
+    display: inline;
+    color: black;
+}
