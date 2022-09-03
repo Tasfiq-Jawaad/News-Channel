@@ -31,14 +31,66 @@ async function displayNews(id) {
 
 
 
-    const displaySection = document.getElementById('newsDisplay');
+    const displaySection = document.getElementById('newsArticle');
     displaySection.textContent = "";
     for (const index of data.data) {
-        console.log(index.thumbnail_url)
+        let title = index.title;
+        let details = index.details;
+        let detailsFull = details;
+        details = ellipsify(details);
+        function ellipsify(details) {
+            if (details.length > 500) {
+                return (details.substring(0, 500) + "...");
+            }
+            else {
+                return details;
+            }
+        }
+        let authorName = index.author.name;
+        console.log(authorName)
+        let thumbnail = index.thumbnail_url;
+        if (authorName === null)
+            authorName = "Author name unknown";
+        let viewCount = index.total_view;
+        if (viewCount === null)
+            viewCount = "View count not available";
         const div = document.createElement("div");
-        div.innerHTML = `<div id="card">
-        <img src="${index.thumbnail_url}" alt="">
-    </div>`
+        div.innerHTML = `<section id="newsDisplay">
+            <div id="newsDisplayCard">
+                <img src="${thumbnail}" alt="">
+                <div id="newsDisplayCardDetails">
+                    <h1>
+                        ${title}
+                    </h1>
+                    <p>${details}
+                    </p>
+                    <div id="author">
+                        <span id="authorInfo">
+                            <img src="${index.author.img}"
+                                alt="">
+                            <h4>${authorName}</h4>
+                        </span>
+                        <span id="views">
+                            <i class="fa-solid fa-users-viewfinder"></i>
+                            <p>${viewCount}</p>
+                        </span>
+                        <span id="modalButton">
+                            <button id="myBtn${id}" onclick="modal(${id})">Show More</button>
+
+                            <div id="myModal${id}" class="modal">
+
+                            <div class="modal-content">
+                                <span class="close">&times;</span>
+
+                                <p>${detailsFull}</p>
+                            </div>
+
+                            </div>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>`
         displaySection.appendChild(div)
 
     }
@@ -68,17 +120,35 @@ const setAllMenu = async () => {
 
 setAllMenu();
 
-// button.innerText = categorys;
+function modal(id) {
+    id = '0' + id;
+    console.log(id)
+    let modalId = "myModal" + id;
+    console.log(modalId)
+    let btnId = "myBtn" + id;
+    console.log(btnId)
+    // Get the modal
+    var modal = document.getElementById(modalId);
+    // Get the button that opens the modal
+    var btn = document.getElementById(btnId);
 
-// button.id = id;
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
 
-// button.onclick = async function () {
-//     const data = await loadCategory(id);
-//     console.log(data);
+    // When the user clicks on the button, open the modal
+    modal.style.display = "block";
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+}
 
 
-//     const div = document.createElement('div');
-
-//     displaySection.appendChild(div)
-
-// }
