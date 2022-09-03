@@ -1,6 +1,6 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
-    color: #F6F6F6;
+    background-color: #F6F6F6;
 }
 
 /*------------------- 
@@ -69,7 +69,32 @@ header hr {
 
 /* menu  */
 
-#menuUl li {
-    display: inline;
-    color: black;
+#menu {
+    width: 80%;
+    display: flex;
+    color: #858585;
+    justify-content: space-between;
+    margin: 20px auto 20px auto;
+}
+
+#menu button {
+    font-size: 25px;
+    background: none;
+    border: none;
+
+}
+
+
+#numOfNewsSection {
+    width: 80%;
+    background-color: white;
+    margin: auto;
+    padding: 10px 0px 10px 20px;
+    display: flex;
+    border-radius: 10px;
+
+}
+
+#newsDisplay {
+    width: 80%;
 }
