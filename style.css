@@ -82,6 +82,7 @@ header hr {
     background: none;
     border: none;
     cursor: pointer;
+    color: #858585;
 }
 
 
@@ -126,6 +127,10 @@ header hr {
     margin-top: 0;
 }
 
+#newsDisplayCardDetails p {
+    color: #A3A3A3;
+}
+
 #author {
     display: flex;
     width: 100%;
@@ -151,6 +156,10 @@ header hr {
     width: 33%;
     font-size: 20px;
     align-items: center;
+}
+
+#views p {
+    color: black;
 }
 
 #modalButton {
@@ -218,5 +227,10 @@ header hr {
 footer {
     text-align: center;
     background-color: white;
-    margin-bottom: 0;
+    margin-bottom: 0px;
+}
+
+footer h2 {
+    margin: 0;
+    color: #858585;
 }

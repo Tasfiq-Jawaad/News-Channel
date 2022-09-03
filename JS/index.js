@@ -1,5 +1,7 @@
-const loadAllMenu = async () => {
-    const response = await fetch("https://openapi.programming-hero.com/api/news/categories")
+window.onload = displayNews(1);
+
+async function loadAllMenu() {
+    const response = await fetch("https://openapi.programming-hero.com/api/news/categories");
     const menuData = await response.json();
     return menuData;
 }
@@ -14,7 +16,6 @@ const loadCategory = async (id) => {
 
 async function displayNews(id) {
     id = '0' + id;
-
     const menuData = await loadAllMenu();
     const categoryName = menuData.data.news_category[parseInt(id) - 1].category_name;
     console.log(categoryName)
