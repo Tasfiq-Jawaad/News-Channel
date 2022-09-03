@@ -29,35 +29,34 @@ async function displayNews(id) {
     document.getElementById('numOfItem').innerText = (data.data.length)
     name.innerText = categoryName;
 
-
-
     const displaySection = document.getElementById('newsArticle');
     displaySection.textContent = "";
-    for (const index of data.data) {
-        let cardId = index._id;
-        console.log(cardId)
-        let title = index.title;
-        let details = index.details;
-        let detailsFull = details;
-        details = ellipsify(details);
-        function ellipsify(details) {
-            if (details.length > 500) {
-                return (details.substring(0, 500) + "...");
+    if (data.data.length != 0) {
+        for (const index of data.data) {
+            let cardId = index._id;
+            console.log(cardId)
+            let title = index.title;
+            let details = index.details;
+            let detailsFull = details;
+            details = ellipsify(details);
+            function ellipsify(details) {
+                if (details.length > 500) {
+                    return (details.substring(0, 500) + "...");
+                }
+                else {
+                    return details;
+                }
             }
-            else {
-                return details;
-            }
-        }
-        let authorName = index.author.name;
-        console.log(authorName)
-        let thumbnail = index.thumbnail_url;
-        if (authorName === null)
-            authorName = "Author name unknown";
-        let viewCount = index.total_view;
-        if (viewCount === null)
-            viewCount = "View count not available";
-        const div = document.createElement("div");
-        div.innerHTML = `<section id="newsDisplay">
+            let authorName = index.author.name;
+            console.log(authorName)
+            let thumbnail = index.thumbnail_url;
+            if (authorName === null)
+                authorName = "Author name unknown";
+            let viewCount = index.total_view;
+            if (viewCount === null)
+                viewCount = "View count not available";
+            const div = document.createElement("div");
+            div.innerHTML = `<section id="newsDisplay">
             <div id="newsDisplayCard">
                 <img src="${thumbnail}" alt="">
                 <div id="newsDisplayCardDetails">
@@ -104,10 +103,11 @@ async function displayNews(id) {
                 </div>
             </div>
         </section>`
-        displaySection.appendChild(div)
-        spinner.style["display"] = "none";
-    }
+            displaySection.appendChild(div)
+        }
 
+    }
+    spinner.style["display"] = "none";
 
 
 
