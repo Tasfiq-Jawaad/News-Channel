@@ -82,8 +82,13 @@ async function displayNews(id) {
 
                             <div class="modal-content">
                                 <span class="close">&times;</span>
-
+                                <h3>${title}</h3>
                                 <p>${detailsFull}</p>
+                                <span id="authorInfo">
+                            <img src="${index.author.img}"
+                                alt="">
+                            <h4>${authorName}</h4>
+                        </span>
                             </div>
 
                             </div>
