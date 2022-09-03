@@ -22,9 +22,6 @@ async function displayNews(id) {
 
     const data = await loadCategory(id);
     console.log(data.data)
-
-
-
     const name = document.getElementById('nameOfCategory')
 
     document.getElementById('numOfItem').innerText = (data.data.length)
@@ -35,6 +32,8 @@ async function displayNews(id) {
     const displaySection = document.getElementById('newsArticle');
     displaySection.textContent = "";
     for (const index of data.data) {
+        let cardId = index._id;
+        console.log(cardId)
         let title = index.title;
         let details = index.details;
         let detailsFull = details;
@@ -76,19 +75,25 @@ async function displayNews(id) {
                             <p>${viewCount}</p>
                         </span>
                         <span id="modalButton">
-                            <button id="myBtn${id}" onclick="modal(${id})">Show More</button>
+                            <button id="myBtn${cardId}" onclick="modal('${cardId}')">Show More</button>
 
-                            <div id="myModal${id}" class="modal">
+                            <div id="myModal${cardId}" class="modal">
 
                             <div class="modal-content">
-                                <span class="close">&times;</span>
+                                <span class="close close${cardId}">&times;</span>
                                 <h3>${title}</h3>
                                 <p>${detailsFull}</p>
-                                <span id="authorInfo">
-                            <img src="${index.author.img}"
-                                alt="">
-                            <h4>${authorName}</h4>
-                        </span>
+                                <div id="author">
+                                    <span id="authorInfo">
+                                        <img src="${index.author.img}"
+                                            alt="">
+                                        <h4>${authorName}</h4>
+                                    </span>
+                                    <span id="views">
+                                        <i class="fa-solid fa-users-viewfinder"></i>
+                                        <p>${viewCount}</p>
+                                    </span>
+                                </div>
                             </div>
 
                             </div>
@@ -127,19 +132,19 @@ const setAllMenu = async () => {
 setAllMenu();
 
 function modal(id) {
-    id = '0' + id;
     console.log(id)
     let modalId = "myModal" + id;
     console.log(modalId)
     let btnId = "myBtn" + id;
     console.log(btnId)
+    let closeId = "close" + id;
     // Get the modal
     var modal = document.getElementById(modalId);
     // Get the button that opens the modal
     var btn = document.getElementById(btnId);
 
     // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
+    var span = document.getElementsByClassName(closeId)[0];
 
     // When the user clicks on the button, open the modal
     modal.style.display = "block";
