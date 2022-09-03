@@ -15,6 +15,8 @@ const loadCategory = async (id) => {
 
 
 async function displayNews(id) {
+    const spinner = document.getElementById('loading')
+    spinner.style["display"] = "";
     id = '0' + id;
     const menuData = await loadAllMenu();
     const categoryName = menuData.data.news_category[parseInt(id) - 1].category_name;
@@ -103,7 +105,7 @@ async function displayNews(id) {
             </div>
         </section>`
         displaySection.appendChild(div)
-
+        spinner.style["display"] = "none";
     }
 
 
