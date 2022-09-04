@@ -32,10 +32,10 @@ async function displayNews(id) {
     id = '0' + id;
     const menuData = await loadAllMenu();
     const categoryName = menuData.data.news_category[parseInt(id) - 1].category_name;
-    console.log(categoryName)
+
 
     const data = await loadCategory(id);
-    console.log(data.data)
+
     const name = document.getElementById('nameOfCategory')
 
     document.getElementById('numOfItem').innerText = (data.data.length)
@@ -46,7 +46,7 @@ async function displayNews(id) {
     if (data.data.length != 0) {
         for (const index of data.data) {
             let cardId = index._id;
-            console.log(cardId)
+
             let title = index.title;
             let details = index.details;
             let detailsFull = details;
@@ -60,7 +60,7 @@ async function displayNews(id) {
                 }
             }
             let authorName = index.author.name;
-            console.log(authorName)
+
             let thumbnail = index.thumbnail_url;
             if (authorName === null)
                 authorName = "Author name unknown";
@@ -146,11 +146,11 @@ const setAllMenu = async () => {
 setAllMenu();
 
 function modal(id) {
-    console.log(id)
+
     let modalId = "myModal" + id;
-    console.log(modalId)
+
     let btnId = "myBtn" + id;
-    console.log(btnId)
+
     let closeId = "close" + id;
     // Get the modal
     var modal = document.getElementById(modalId);
