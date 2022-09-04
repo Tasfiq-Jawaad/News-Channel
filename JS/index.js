@@ -1,16 +1,28 @@
 window.onload = displayNews(1);
 
 async function loadAllMenu() {
-    const response = await fetch("https://openapi.programming-hero.com/api/news/categories");
-    const menuData = await response.json();
-    return menuData;
+    try {
+        const response = await fetch("https://openapi.programming-hero.com/api/news/categories");
+        const menuData = await response.json();
+
+        return menuData;
+    }
+    catch (error) {
+        console.log(error)
+    }
+
 }
 
 const loadCategory = async (id) => {
+    try {
+        const response = await fetch(`https://openapi.programming-hero.com/api/news/category/${id}`)
+        const categoryData = await response.json();
+        return categoryData;
+    }
+    catch (error) {
+        console.log(error)
+    }
 
-    const response = await fetch(`https://openapi.programming-hero.com/api/news/category/${id}`)
-    const categoryData = await response.json();
-    return categoryData;
 }
 
 
